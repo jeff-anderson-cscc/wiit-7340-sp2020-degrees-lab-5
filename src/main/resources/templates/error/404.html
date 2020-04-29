@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header(~{::title})">
+  <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('home')"></div>
+
+<div class="container">
+  <div class="jumbotron m-5">
+    <h1 class="display-4">Not Found</h1>
+    <p class="lead">Page not found</p>
+  </div>
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>

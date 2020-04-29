@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header(~{::title})">
+    <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('home')"></div>
+
+<div class="container">
+    <img class="img-fluid" src="/images/Overhead-Table-HERO-Dodged.png" alt="Degrees at Columbus State">
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>

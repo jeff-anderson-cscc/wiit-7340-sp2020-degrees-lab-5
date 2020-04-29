@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header(~{::title})">
+  <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('cats')"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Menu Categories</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="ml-3">
+        <form method="POST" th:action="@{/categories}" th:object="${menuCategory}">
+
+          <div th:if="*{id}">
+            <div class="form-group row">
+              <label for="blog_category_id" class="col-sm-2 col-form-label">ID:</label>
+              <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="blog_category_id" th:field="*{id}"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Title:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="description" th:errorclass="is-invalid" th:field="*{categoryTitle}"/>
+              <p class="text-danger" th:each="err : ${#fields.errors('categoryTitle')}" th:text="${err}" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="categoryNotes" class="col-sm-2 col-form-label">Notes:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="categoryNotes" th:field="*{categoryNotes}"/>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="sortOrder" class="col-sm-2 col-form-label">Sort Order:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="sortOrder" th:field="*{sortOrder}"/>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col text-center">
+
+            <button type="submit" class="btn btn-primary">
+              <span class="far fa-save"></span>
+              <span class="d-none d-md-inline">Save Changes</span>
+            </button>
+
+            <a href="/categories" class="btn btn-secondary" role="button">
+              <span class="fa fa-times"></span>
+              <span>Cancel</span>
+            </a>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header(~{::title})">
+  <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('cats')"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Menu Categories</h2>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center">
+          <a href="/categories" th:href="@{/categories/new}" class="btn btn-outline-primary btn-lg">Create a New category</a>
+        </p>
+        <div th:if="${message}" th:text="${message}" th:class="${error}? 'alert alert-danger' : 'alert alert-success'" role="alert">
+          A simple success alert—check it out!
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Order</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="menuCategory : ${categoryList}">
+            <th scope="row" th:text="${menuCategory.id}">ID</th>
+            <td th:text="${menuCategory.categoryTitle}">Tile</td>
+            <td th:text="${menuCategory.categoryNotes}">Notes</td>
+            <td th:text="${menuCategory.sortOrder}">10</td>
+            <td>
+                <a href="/categories" th:href="@{/categories/delete/{categoryId}(categoryId=${menuCategory.id})}" class="btn btn-outline-dark mr-1" role="button">
+                  <i class="fas fa-trash"></i>
+                </a>
+                <a href="/categories" th:href="@{/categories/{categoryId}(categoryId=${menuCategory.id})}" class="btn btn-outline-dark" role="button">
+                  <i class="fa fa-pen"></i>
+                </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>

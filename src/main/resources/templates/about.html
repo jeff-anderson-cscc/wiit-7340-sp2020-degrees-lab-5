@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="base :: common_header(~{::title})">
+    <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('about')"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 rm">
+            <h2 th:text="#{view.about.title}">About</h2>
+            <p th:text="#{view.about.message}">Snazzy about message</p>
+        </div>
+        <div class="col-sm-4">
+            <h3 th:text="#{view.about.phone-label}">Phone</h3>
+            <p>614-287-5578</p>
+
+            <h3 th:text="#{view.about.location-label}">Location</h3>
+            <p class="mb-3">250 Cleveland Ave., Columbus, OH 43215</p>
+            <p th:text="#{view.about.parking}">Parking info</p>
+
+            <h3 th:text="#{view.about.hours-label}">Hours</h3>
+            <p th:text="#{view.about.hours}" class="hours mb-2"><strong>Open 24x7</strong></p>
+        </div>
+    </div>
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>

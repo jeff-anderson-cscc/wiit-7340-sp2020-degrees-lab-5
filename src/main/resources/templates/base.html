@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="common_header(title)">
+  <meta charset="UTF-8">
+  <title th:replace="${title}">Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="shortcut icon" href="favicon.ico" th:href="@{/favicon.ico}"/>
+  <link rel="stylesheet" href="/css/app.css"/>
+  <script src="https://kit.fontawesome.com/ac5d4ca8dd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div th:fragment="header(activePage)">
+    <div id="nav">
+      <a th:class="${activePage} == 'home'? 'nav-link-active' : ''" th:href="@{/}" href="/">Home </a> |
+      <a th:class="${activePage} == 'menu'? 'nav-link-active' : ''" th:href="@{/menu}" href="/">Menu</a> |
+      <a th:class="${activePage} == 'cats'? 'nav-link-active' : ''" th:href="@{/categories}" href="/">Menu Categories</a> |
+      <a th:class="${activePage} == 'items'? 'nav-link-active' : ''" th:href="@{/items}" href="/">Menu Items</a> |
+      <a th:class="${activePage} == 'about'? 'nav-link-active' : ''" th:href="@{/about}" href="/">About </a>
+    </div>
+  </div>
+
+  <div th:fragment="footer" class="mt-2">
+    <p class="font-weight-lighter text-center">
+       &copy; [[${#calendars.format(#calendars.createNow(), 'yyyy')}]] Columbus State Community College.
+     </p>
+  </div>
+
+
+  <div th:fragment="script">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </div>
+
+</body>
+
+</html>

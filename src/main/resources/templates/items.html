@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: common_header(~{::title})">
+  <title>Degrees Restaurant – at Columbus State’s Cameron Mitchell Hall</title>
+</head>
+
+<body>
+
+<div th:include="base :: header('items')"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Menu Items</h2>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center">
+          <a href="/items" th:href="@{/items/new}" class="btn btn-outline-primary btn-lg">Create a New item</a>
+        </p>
+        <div th:if="${message}" th:text="${message}" th:class="${error}? 'alert alert-danger' : 'alert alert-success'" role="alert">
+          A simple success alert—check it out!
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col" class="text-right">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="menuItem : ${itemList}">
+            <th scope="row" th:text="${menuItem.id}">ID</th>
+            <td th:text="${menuItem.name}">Tile</td>
+            <td th:text="${menuItem.description}">Notes</td>
+            <td th:text="${menuItem.price}">10</td>
+            <td class="text-right">
+              <div class="btn-group flex-btn-group-container">
+                <a href="/items" th:href="@{/items/delete/{itemId}(itemId=${menuItem.id})}" class="btn btn-outline-dark mr-1" role="button">
+                  <i class="fas fa-trash"></i>
+                </a>
+                <a href="/items" th:href="@{/items/{itemId}(itemId=${menuItem.id})}" class="btn btn-outline-dark" role="button">
+                  <i class="fa fa-pen"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+<div th:include="base :: footer"></div>
+<div th:replace="base :: script"></div>
+
+</body>
+</html>
