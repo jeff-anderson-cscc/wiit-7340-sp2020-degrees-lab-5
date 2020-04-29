@@ -14,7 +14,7 @@ __Also:__ If you want to display menu items you created and saved in your Postgr
 1. Right click on the `DegreesApplication` class and choose "Run DegreesApplication".
 1. After the app starts, stop it. Just running the app creates a run configuration.
 1. From the menu choose __Run > Edit Configurations__ 
-1. In the "VM options" of the Degrees App run configuration, add `-Dspring.profiles.active=postgres` as a VM Option in your Degrees Application run configuration. 
+1. In the "VM options" of the Degrees App run configuration, add `-Dspring.profiles.active=postgres`. 
 
 ## Tasks
 
