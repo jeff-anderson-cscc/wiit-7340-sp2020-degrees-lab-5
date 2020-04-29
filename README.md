@@ -10,10 +10,10 @@ Using the [create from template](https://help.github.com/en/github/creating-clon
 __TIP:__ When getting unit tests working, fix them one by one in order. Avoid moving on to the next test until all the ones above are working.
 
 - [ ] Get all test in `S01_WebContentControllerTests` passing by correctly implementing methods in `WebContentController`.  Completing this should get the [menu page](http://localhost:3000/menu) working correctly.
-- [ ] Get all tests in `S02_MessageSourcePropertyTests` passing by adding internationalization support using the instruction below. Once this complete, the [about page](http://localhost:3000/about) to display correctly in English and Spanish.
+- [ ] Get all tests in `S02_MessageSourcePropertyTests` passing by adding internationalization support using the instruction below. Once complete, the [about page](http://localhost:3000/about) should display correctly in English and Spanish.
 - [ ] Get all test in `S03_WebMenuCategoryControllerTests` passing by correctly implementing methods in `WebMenuCategoryController`. Once these tests are passing, the [Menu Categories](http://localhost:3000/categories) pages should work correctly.
-- [ ] Get all test in `S04_WebMenuItemTests` passing by correctly implementing methods in `WebMenuItemController`.Once these tests are passing, the [Menu Items](http://localhost:3000/items) pages should work correctly.
-- [ ] Add multilingual validation constraint messages using the instructions below. Test this by attempting to submit blank new menu items and menu categories. The field errors should show English or Spanish, depending on your browser settings.
+- [ ] Get all tests in `S04_WebMenuItemTests` passing by correctly implementing methods in `WebMenuItemController`. Once these tests are passing, the [Menu Items](http://localhost:3000/items) pages should work correctly.
+- [ ] Add multilingual validation constraint messages using the instructions below.
 
 ## Adding support for Internationalization
 
@@ -94,7 +94,8 @@ public LocalValidatorFactoryBean getValidator() {
 ```
 
 - [ ] Attempt to save a new blank menu items or menu category. Notice the error message matches the value in the @Size annotations in `edu.cscc.degrees.domain.MenuCategory` and `edu.cscc.degrees.domain.MenuItem`.
-- [ ] Remove the message = property from each of the@Size annotations in `edu.cscc.degrees.domain.MenuCategory` and `edu.cscc.degrees.domain.MenuItem`. For example:
+- [ ] Remove the `message=` property from each of the @Size annotations in `edu.cscc.degrees.domain.MenuCategory` and `edu.cscc.degrees.domain.MenuItem`. For example:
+
 __before:__
 ```java
   @NotNull
