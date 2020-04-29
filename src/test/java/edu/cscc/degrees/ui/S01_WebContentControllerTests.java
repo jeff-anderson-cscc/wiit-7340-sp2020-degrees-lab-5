@@ -67,4 +67,15 @@ public class S01_WebContentControllerTests {
     verify(contentService, times(1)).getMenuItems();
   }
 
+  @Test
+  @DisplayName("T04: GET to /about returns about view")
+  public void test04 (@Autowired MockMvc mockMvc) throws Exception {
+    mockMvc.perform(MockMvcRequestBuilders.get("/about")).andExpect(
+      MockMvcResultMatchers.status().isOk())
+      .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+      .andExpect(content().encoding("UTF-8"))
+      .andExpect(MockMvcResultMatchers.view().name("about"));
+  }
+
+
 }

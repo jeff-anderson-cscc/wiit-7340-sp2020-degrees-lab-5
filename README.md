@@ -10,9 +10,9 @@ Using the [create from template](https://help.github.com/en/github/creating-clon
 __TIP:__ When getting unit tests working, fix them one by one in order. Avoid moving on to the next test until all the ones above are working.
 
 - [ ] Get all test in `S01_WebContentControllerTests` passing by correctly implementing methods in `WebContentController`.  Completing this should get the [menu page](http://localhost:3000/menu) working correctly.
-- [ ] Get all test in `S02_MessageSourcePropertyTests` passing by adding internationalization support using the instruction below. Once this is done, the [about page](http://localhost:3000/about) to display correctly in English and Spanish.
-- [ ] Get all test in `S03_WebMenuCategoryControllerTests` passing by correctly implementing methods in `WebMenuCategoryController`. Once thes tests are passing, the [Menu Categories](http://localhost:3000/categories) pages should work correctly.
-- [ ] Get all test in `S04_WebMenuItemTests` passing by correctly implementing methods in `WebMenuItemController`.Once thes tests are passing, the [Menu Items](http://localhost:3000/items) pages should work correctly.
+- [ ] Get all tests in `S02_MessageSourcePropertyTests` passing by adding internationalization support using the instruction below. Once this complete, the [about page](http://localhost:3000/about) to display correctly in English and Spanish.
+- [ ] Get all test in `S03_WebMenuCategoryControllerTests` passing by correctly implementing methods in `WebMenuCategoryController`. Once these tests are passing, the [Menu Categories](http://localhost:3000/categories) pages should work correctly.
+- [ ] Get all test in `S04_WebMenuItemTests` passing by correctly implementing methods in `WebMenuItemController`.Once these tests are passing, the [Menu Items](http://localhost:3000/items) pages should work correctly.
 - [ ] Add multilingual validation constraint messages using the instructions below. Test this by attempting to submit blank new menu items and menu categories. The field errors should show English or Spanish, depending on your browser settings.
 
 ## Adding support for Internationalization
@@ -55,12 +55,12 @@ public ResourceBundleMessageSource messageSource () {
 ```
 
 - [ ] Verify the test in `S02_MessageSourcePropertyTests` runs successfully.
-- [ ] Visit the [About]((http://localhost:3000/about) page and make sure you see the English content from the first property file.
+- [ ] Visit the [About](http://localhost:3000/about) page and make sure you see the English content from the first property file.
 - [ ] Change your preferred language to Spanish. Refresh the page and make sure you see the content in Spanish.
 
 ## Adding support for multilingual validation constraint messages
 
-- [ ] under __src > main > resources > i18n__ add a new file called `messages.properties` with the following contents:
+- [ ] under __src > main > resources > i18n__ add a new file called `ValidationMessages.properties` with the following contents:
 
 ```
 #https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html
@@ -69,7 +69,7 @@ javax.validation.constraints.NotNull.message=Must not be null
 javax.validation.constraints.Size.message=Must be between {min} and {max} characters
 ```
   
-- [ ] under __src > main > resources > i18n__ add a new file called `ValidationMessages.properties` with the following contents:
+- [ ] under __src > main > resources > i18n__ add a new file called `ValidationMessages_es.properties` with the following contents:
 
 ```
 javax.validation.constraints.min.Size.message = Debe tener al menos {min} caracteres
@@ -93,6 +93,19 @@ public LocalValidatorFactoryBean getValidator() {
 }
 ```
 
-- [ ] Verify the test in `S02_MessageSourcePropertyTests` runs successfully.
-- [ ] Visit the [About]((http://localhost:3000/about) page and make sure you see the English content from the first property file.
-- [ ] Change your preferred language to Spanish. Refresh the page and make sure you see the content in Spanish.
+- [ ] Attempt to save a new blank menu items or menu category. Notice the error message matches the value in the @Size annotations in `edu.cscc.degrees.domain.MenuCategory` and `edu.cscc.degrees.domain.MenuItem`.
+- [ ] Remove the message = property from each of the@Size annotations in `edu.cscc.degrees.domain.MenuCategory` and `edu.cscc.degrees.domain.MenuItem`. For example:
+__before:__
+```java
+  @NotNull
+  @Size(min = 1, max = 80,
+    message = "Please enter a name up to 80 characters in length")
+  private String name;
+```
+__after:__
+```java
+  @NotNull
+  @Size(min = 1, max = 80)
+  private String name;
+```
+- [ ] Restart the app and try to submit a new blank category or item. You the error should be either "Must be between {min} and {max} characters" or "Debe tener entre {min} y {max} caracteres" depending on your language selection.

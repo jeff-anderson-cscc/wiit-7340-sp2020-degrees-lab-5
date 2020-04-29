@@ -15,7 +15,7 @@ public class WebContentController {
 
 
   // @GetMapping("/")
-  public String hanleIndex() {
+  public String handleIndex() {
     return "index";
   }
 
