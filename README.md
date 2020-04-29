@@ -3,11 +3,20 @@
 
 ## Getting started:
 
-Using the [create from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) option, create a repository from this template.
+- [ ] Using the [create from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) option, create a repository from this template.
+- [ ] Clone your new repository locally and open it in IntelliJ
+
+## Tips
+
+When getting unit tests working, fix them one by one in order. Avoid moving on to the next test until all the ones above are working.
+
+__Also:__ If you want to display menu items you created and saved in your PostgreSQL database:
+1. Right click on the `DegreesApplication` class and choose "Run DegreesApplication".
+1. After the app starts, stop it. Just running the app creates a run configuration.
+1. From the menu choose __Run > Edit Configurations__ 
+1. In the "VM options" of the Degrees App run configuration, add `-Dspring.profiles.active=postgres` as a VM Option in your Degrees Application run configuration. 
 
 ## Tasks
-
-__TIP:__ When getting unit tests working, fix them one by one in order. Avoid moving on to the next test until all the ones above are working.
 
 - [ ] Get all test in `S01_WebContentControllerTests` passing by correctly implementing methods in `WebContentController`.  Completing this should get the [menu page](http://localhost:3000/menu) working correctly.
 - [ ] Get all tests in `S02_MessageSourcePropertyTests` passing by adding internationalization support using the instruction below. Once complete, the [about page](http://localhost:3000/about) should display correctly in English and Spanish.
